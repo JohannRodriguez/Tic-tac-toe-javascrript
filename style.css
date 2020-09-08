@@ -1,0 +1,54 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+.table-cell {
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+}
+
+.table-cell p {
+  font-size: 150px;
+  margin: 40px 0 0;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.table-board {
+  width: fit-content;
+  margin: auto;
+}
+
+.table-row {
+  display: flex;
+}
+
+.border-right {
+ border-right: 3px solid white;
+}
+
+.border-left {
+ border-left: 3px solid white;
+}
+
+.border-sides {
+  border-right: 3px solid white;
+  border-left: 3px solid white;
+}
+
+.border-top {
+ border-top: 3px solid white;
+}
+
+.border-bot {
+  border-bottom: 3px solid white;
+}
+
+.border-both {
+  border-bottom: 3px solid white;
+  border-top: 3px solid white;
+}
