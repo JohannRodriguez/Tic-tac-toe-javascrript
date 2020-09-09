@@ -8,39 +8,41 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <h1 class="player-turn">Player x turn</h1>
-    <div class="table-board">
-        <div class="table-row">
+    <div class="player-turn">
+      <h1 id="turn">Player X turn</h1>  
+    </div>
+    <div class="table-board" id="board">
+        <div class="table-row" id="row-1">
             <div class="table-cell border-right border-bot" id="cell-1" data-cell="1">
-                <p>X</p>
+              <p id="xotext-1"></p>
             </div>
             <div class="table-cell border-sides border-bot" id="cell-2" data-cell="2">
-                <p>X</p>
+              <p id="xotext-2"></p>
             </div>
             <div class="table-cell border-left border-bot" id="cell-3" data-cell="3">
-                <p>X</p>
+              <p id="xotext-3"></p>
             </div>
         </div>
-        <div class="table-row">
+        <div class="table-row" id="row-2">
             <div class="table-cell border-right border-both" id="cell-4" data-cell="4">
-                <p>X</p>
+              <p id="xotext-4"></p>
             </div>
             <div class="table-cell border-sides border-both" id="cell-5" data-cell="5">
-                <p>O</p>
+              <p id="xotext-5"></p>
             </div>
             <div class="table-cell border-left border-both" id="cell-6" data-cell="6">
-                <p>X</p>
+              <p id="xotext-6"></p>
             </div>
         </div>
-        <div class="table-row">
+        <div class="table-row" id="row-3">
             <div class="table-cell border-right border-top" id="cell-7" data-cell="7">
-                <p>X</p>
+              <p id="xotext-7"></p>
             </div>
             <div class="table-cell border-sides border-top" id="cell-8" data-cell="8">
-                <p>X</p>
+              <p id="xotext-8"></p>
             </div>
             <div class="table-cell border-left border-top" id="cell-9" data-cell="9">
-                <p>X</p>
+              <p id="xotext-9"></p>
             </div>
         </div>
     </div>
