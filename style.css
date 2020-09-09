@@ -28,11 +28,11 @@ body {
 }
 
 .border-right {
- border-right: 3px solid white;
+  border-right: 3px solid white;
 }
 
 .border-left {
- border-left: 3px solid white;
+  border-left: 3px solid white;
 }
 
 .border-sides {
@@ -41,7 +41,7 @@ body {
 }
 
 .border-top {
- border-top: 3px solid white;
+  border-top: 3px solid white;
 }
 
 .border-bot {
