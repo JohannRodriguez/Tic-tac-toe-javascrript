@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# JS Tic-Tac-Toe
 
-> One paragraph statement about the project.
+> This is a tic-tac-toe page project, we used javascript, HTML, and CSS to create a playable game inside the browser making use of functions and DOM
 
 ![screenshot](./app_screenshot.png)
 
@@ -10,50 +10,23 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+- Javascript
+- HTML
+- CSS
 
 ## Authors
 
-👤 **Author1**
+👤 **Ricardo Vera**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- Github: [@ricardo123321](https://github.com/ricardo123321)
+- Twitter: [@ricardo123321](https://twitter.com/ricardo123321)
+- Linkedin: [linkedin](https://linkedin.com/in/ricardo123321)
 
-👤 **Author2**
+👤 **Johann Rodriguez**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- Github: [@JohannRodriguez](https://github.com/JohannRodriguez)
+- Twitter: [@BSapce](https://https://twitter.com/BSapce)
+- Linkedin: [Johann Rodríguez](https://www.linkedin.com/in/johann-alonso-rodr%C3%ADguez-v%C3%A1zquez-25b07719a/)
 
 ## 🤝 Contributing
 
