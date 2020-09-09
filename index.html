@@ -8,10 +8,21 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div class="player-turn">
-      <h1 id="turn">Player X turn</h1>  
+  <div class="players-form">
+    <div style="display: block;" id="form-1">
+      <input type="text" id="player-1" placeholder="Player 1 name">
+      <button type="submit" id="btn-1">Create player</button>
     </div>
-    <div class="table-board" id="board">
+    <div style="display: none;" id="form-2">
+      <input type="text" id="player-2" placeholder="Player 2 name">
+      <button type="submit" id="btn-2">Create player</button>
+    </div>
+  </div>
+  <div class="cover-board" id="cover-board" style="display: none;"><h2 id="winner"></h2></div>
+  <div class="table-board" id="board" style="display: none;">
+      <div class="player-turn">
+        <h1 id="turn"></h1>
+      </div>
         <div class="table-row" id="row-1">
             <div class="table-cell border-right border-bot" id="cell-1" data-cell="1">
               <p id="xotext-1"></p>
@@ -46,6 +57,7 @@
             </div>
         </div>
     </div>
+    <button id="restart" style="display: none;">Restart match</button>
     <script src="/main.js"></script>
 </body>
 </html>
