@@ -1,18 +1,27 @@
 
-const xs = [];
-const os = [];
-const winCondition = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
-  [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
-const cellSelector = document.querySelectorAll('.table-cell');
 const playerTurn = document.getElementById('turn');
-let player1 = '';
-let player2 = '';
+
+const Gameboard = () => {
+  const winCondition = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+  [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
+  const tcell = document.querySelectorAll('.table-cell');
+  return {winCondition, tcell}
+}
+
+const Player = (name) => {
+  const getName = () => name;
+  const getPlays = [];
+  return {getName, getPlays}
+}
+const game = Gameboard()
+const player1 = Player('', 'X')
+const player2 = Player('', 'O')
 
 function turn() {
-  if (playerTurn.textContent === `Player ${player1} turn`) {
-    playerTurn.textContent = `Player ${player2} turn`;
+  if (playerTurn.textContent === `Player ${player1.getName} turn`) {
+    playerTurn.textContent = `Player ${player2.getName} turn`;
   } else {
-    playerTurn.textContent = `Player ${player1} turn`;
+    playerTurn.textContent = `Player ${player1.getName} turn`;
   }
 }
 
@@ -20,7 +29,7 @@ function check(num) {
   const winner = document.getElementById('winner');
   const cover = document.getElementById('cover-board');
   let tie = true;
-  winCondition.forEach(win => {
+  game.winCondition.forEach(win => {
     let counter = 0;
     win.forEach(cool => {
       if (num.includes(cool)) {
@@ -30,33 +39,39 @@ function check(num) {
     if (counter === 3) {
       cover.style.display = 'block';
       tie = false;
-      if (playerTurn.textContent === `Player ${player1} turn`) {
-        winner.textContent = `${player1} is the winner!`;
+      if (playerTurn.textContent === `Player ${player1.getName} turn`) {
+        winner.textContent = `${player1.getName} is the winner!`;
         playerTurn.textContent = '';
-      } else if (playerTurn.textContent === `Player ${player2} turn`) {
-        winner.textContent = `${player2} is the winner!`;
+      } else if (playerTurn.textContent === `Player ${player2.getName} turn`) {
+        winner.textContent = `${player2.getName} is the winner!`;
         playerTurn.textContent = '';
       }
     }
   });
-  if (xs.length + os.length === 9 && tie === true) {
+  if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
     cover.style.display = 'block';
     winner.textContent = "No winner, it's a tie";
   }
 }
 
-cellSelector.forEach(cell => {
+game.tcell.forEach(cell => {
   cell.addEventListener('click', () => {
     const tableCell = document.getElementById(`xotext-${cell.dataset.cell}`);
-    if (playerTurn.textContent === `Player ${player1} turn` && tableCell.textContent === '') {
+    if (playerTurn.textContent === `Player ${player1.getName} turn` && tableCell.textContent === '') {
       tableCell.textContent = 'X';
-      xs.push(parseInt(cell.dataset.cell, 10));
-      check(xs);
+      let xs = player1.getPlays
+      xs.push(parseInt(cell.dataset.cell, 10))
+      player1.getPlays = xs
+      console.log(player1.getPlays)
+      check(player1.getPlays);
       turn();
-    } else if (playerTurn.textContent === `Player ${player2} turn` && tableCell.textContent === '') {
+    } else if (playerTurn.textContent === `Player ${player2.getName} turn` && tableCell.textContent === '') {
       tableCell.textContent = 'O';
+      let os = player2.getPlays
       os.push(parseInt(cell.dataset.cell, 10));
-      check(os);
+      player2.getPlays = os
+      console.log(player2.getPlays)
+      check(player2.getPlays);
       turn();
     }
   });
@@ -75,20 +90,20 @@ btn1.addEventListener('click', (event) => {
     const pl = document.getElementById('player-1');
     pl.setAttribute('placeholder', 'wrong name');
   } else {
-    player1 = document.getElementById('player-1').value;
+    player1.getName = document.getElementById('player-1').value;
     firstForm.style.display = 'none';
     secondForm.style.display = 'block';
-    playerTurn.textContent = `Player ${player1} turn`;
+    playerTurn.textContent = `Player ${player1.getName} turn`;
   }
 });
 
 btn2.addEventListener('click', (event) => {
   event.preventDefault();
-  if (document.getElementById('player-2').value === '' || document.getElementById('player-2').value === player1) {
+  if (document.getElementById('player-2').value === '' || document.getElementById('player-2').value === player1.getName) {
     const pl = document.getElementById('player-2');
     pl.setAttribute('placeholder', 'wrong name');
   } else {
-    player2 = document.getElementById('player-2').value;
+    player2.getName = document.getElementById('player-2').value;
     secondForm.style.display = 'none';
     const board = document.getElementById('board');
     board.style.display = 'block';
@@ -100,3 +115,4 @@ btn2.addEventListener('click', (event) => {
 restart.addEventListener('click', () => {
   window.location.reload();
 });
+
