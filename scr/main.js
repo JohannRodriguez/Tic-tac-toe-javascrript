@@ -2,19 +2,19 @@ const playerTurn = document.getElementById('turn');
 
 const Gameboard = () => {
   const winCondition = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
-  [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
+    [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
   const tcell = document.querySelectorAll('.table-cell');
-  return {winCondition, tcell}
-}
+  return { winCondition, tcell };
+};
 
 const Player = (name) => {
   const getName = () => name;
   const getPlays = [];
-  return {getName, getPlays}
-}
-const game = Gameboard()
-const player1 = Player('', 'X')
-const player2 = Player('', 'O')
+  return { getName, getPlays };
+};
+const game = Gameboard();
+const player1 = Player('', 'X');
+const player2 = Player('', 'O');
 
 function turn() {
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
@@ -58,26 +58,24 @@ game.tcell.forEach(cell => {
     const tableCell = document.getElementById(`xotext-${cell.dataset.cell}`);
     if (playerTurn.textContent === `Player ${player1.getName} turn` && tableCell.textContent === '') {
       tableCell.textContent = 'X';
-      let xs = player1.getPlays
-      xs.push(parseInt(cell.dataset.cell, 10))
-      player1.getPlays = xs
-      console.log(player1.getPlays)
+      const xs = player1.getPlays;
+      xs.push(parseInt(cell.dataset.cell, 10));
+      player1.getPlays = xs;
       check(player1.getPlays);
       turn();
     } else if (playerTurn.textContent === `Player ${player2.getName} turn` && tableCell.textContent === '') {
       tableCell.textContent = 'O';
-      let os = player2.getPlays
+      const os = player2.getPlays;
       os.push(parseInt(cell.dataset.cell, 10));
-      player2.getPlays = os
-      console.log(player2.getPlays)
+      player2.getPlays = os;
       check(player2.getPlays);
       turn();
     }
   });
-const btn1 = document.getElementById('btn-1');
-const btn2 = document.getElementById('btn-2');
-const firstForm = document.getElementById('form-1');
-const secondForm = document.getElementById('form-2');
-const restart = document.getElementById('restart');
-adddbtn(btn1, btn2, restart, firstForm, secondForm)
+  const btn1 = document.getElementById('btn-1');
+  const btn2 = document.getElementById('btn-2');
+  const firstForm = document.getElementById('form-1');
+  const secondForm = document.getElementById('form-2');
+  const restart = document.getElementById('restart');
+  adddbtn(btn1, btn2, restart, firstForm, secondForm);
 });
