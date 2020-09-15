@@ -9,17 +9,17 @@
 </head>
 <body>
   <div class="players-form">
-    <div style="display: block;" id="form-1">
+    <div class="block" id="form-1">
       <input type="text" id="player-1" placeholder="Player 1 name">
       <button type="submit" id="btn-1">Create player</button>
     </div>
-    <div style="display: none;" id="form-2">
+    <div class="none" id="form-2">
       <input type="text" id="player-2" placeholder="Player 2 name">
       <button type="submit" id="btn-2">Create player</button>
     </div>
   </div>
-  <div class="cover-board" id="cover-board" style="display: none;"><h2 id="winner"></h2></div>
-  <div class="table-board" id="board" style="display: none;">
+  <div class="cover-board none" id="cover-board"><h2 id="winner"></h2></div>
+  <div class="table-board none" id="board">
       <div class="player-turn">
         <h1 id="turn"></h1>
       </div>
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <button id="restart" style="display: none;">Restart match</button>
+    <button id="restart" class="none">Restart match</button>
     <script src="/scr/dom.js"></script>
     <script src="/scr/main.js"></script>
 </body>

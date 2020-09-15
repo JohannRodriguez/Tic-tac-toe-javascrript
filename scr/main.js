@@ -12,11 +12,12 @@ const Player = (name) => {
   const getPlays = [];
   return { getName, getPlays };
 };
+
 const game = Gameboard();
 const player1 = Player('', 'X');
 const player2 = Player('', 'O');
 
-function turn() {
+const turn = () => {
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
     playerTurn.textContent = `Player ${player2.getName} turn`;
   } else {
@@ -24,7 +25,7 @@ function turn() {
   }
 }
 
-function check(num) {
+const check = (num) => {
   const winner = document.getElementById('winner');
   const cover = document.getElementById('cover-board');
   let tie = true;
@@ -36,7 +37,8 @@ function check(num) {
       }
     });
     if (counter === 3) {
-      cover.style.display = 'block';
+      cover.classList.remove('none');
+      cover.classList.add('block');
       tie = false;
       if (playerTurn.textContent === `Player ${player1.getName} turn`) {
         winner.textContent = `${player1.getName} is the winner!`;
@@ -48,7 +50,8 @@ function check(num) {
     }
   });
   if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
-    cover.style.display = 'block';
+    cover.classList.remove('none');
+    cover.classList.add('block');
     winner.textContent = "No winner, it's a tie";
   }
 }

@@ -61,3 +61,11 @@ body {
   padding-top: 40px;
   box-sizing: border-box;
 }
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
