@@ -27,7 +27,7 @@ const turn = () => {
 
 const gameFlow = (num) => {
   let tie = true;
-  playerWinner = ''
+  playerWinner = '';
   game.winCondition.forEach(win => {
     let counter = 0;
     win.forEach(cool => {
@@ -48,13 +48,13 @@ const gameFlow = (num) => {
   if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
     playerWinner = "No winner, it's a tie";
   }
-  return { playerWinner }
+  return { playerWinner };
 };
 
 const check = (gameSet) => {
   const cover = document.getElementById('cover-board');
   const winner = document.getElementById('winner');
-  if (!gameSet.playerWinner == '') {
+  if (gameSet.playerWinner.length !== 0) {
     coverDom(cover);
     changeText(winner, gameSet.playerWinner);
     changeText(playerTurn, '');
