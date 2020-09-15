@@ -1,9 +1,9 @@
 const addbtnDom = (firstForm, secondForm) => {
   firstForm.classList.remove('block');
-    firstForm.classList.add('none');
-    secondForm.classList.remove('none')
-    secondForm.classList.add('block');
-    playerTurn.textContent = `Player ${player1.getName} turn`;
+  firstForm.classList.add('none');
+  secondForm.classList.remove('none');
+  secondForm.classList.add('block');
+  playerTurn.textContent = `Player ${player1.getName} turn`;
 };
 
 const btn2Dom = (secondForm, restart) => {

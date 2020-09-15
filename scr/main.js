@@ -19,11 +19,11 @@ const player2 = Player('', 'O');
 
 const turn = () => {
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-    changeText(playerTurn, `Player ${player2.getName} turn`)
+    changeText(playerTurn, `Player ${player2.getName} turn`);
   } else {
-    changeText(playerTurn, `Player ${player1.getName} turn`)
+    changeText(playerTurn, `Player ${player1.getName} turn`);
   }
-}
+};
 
 const check = (num) => {
   const winner = document.getElementById('winner');
@@ -52,7 +52,7 @@ const check = (num) => {
     coverDom(cover, winner);
     changeText(winner, "No winner, it's a tie");
   }
-}
+};
 
 const adddbtn = (btn1, btn2, restart, firstForm, secondForm) => {
   btn1.addEventListener('click', (event) => {
