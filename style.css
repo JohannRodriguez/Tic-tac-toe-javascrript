@@ -69,3 +69,8 @@ body {
 .none {
   display: none;
 }
+
+.cover-board h2 {
+  background-color: black;
+  width: fit-content;
+}

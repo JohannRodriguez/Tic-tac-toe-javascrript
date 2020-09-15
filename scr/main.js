@@ -25,10 +25,9 @@ const turn = () => {
   }
 };
 
-const check = (num) => {
-  const winner = document.getElementById('winner');
-  const cover = document.getElementById('cover-board');
+const gameFlow = (num) => {
   let tie = true;
+  playerWinner = ''
   game.winCondition.forEach(win => {
     let counter = 0;
     win.forEach(cool => {
@@ -37,20 +36,28 @@ const check = (num) => {
       }
     });
     if (counter === 3) {
-      coverDom(cover);
       tie = false;
       if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-        changeText(winner, `${player1.getName} is the winner!`);
-        changeText(playerTurn, '');
+        playerWinner = `${player1.getName} is the winner!`;
       } else if (playerTurn.textContent === `Player ${player2.getName} turn`) {
-        changeText(winner, `${player2.getName} is the winner!`);
-        changeText(playerTurn, '');
+        playerWinner = `${player2.getName} is the winner!`;
       }
     }
   });
+
   if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
-    coverDom(cover, winner);
-    changeText(winner, "No winner, it's a tie");
+    playerWinner = "No winner, it's a tie";
+  }
+  return { playerWinner }
+};
+
+const check = (gameSet) => {
+  const cover = document.getElementById('cover-board');
+  const winner = document.getElementById('winner');
+  if (!gameSet.playerWinner == '') {
+    coverDom(cover);
+    changeText(winner, gameSet.playerWinner);
+    changeText(playerTurn, '');
   }
 };
 
@@ -90,15 +97,17 @@ game.tcell.forEach(cell => {
       const xs = player1.getPlays;
       xs.push(parseInt(cell.dataset.cell, 10));
       player1.getPlays = xs;
-      check(player1.getPlays);
+      const gameSet = gameFlow(player1.getPlays);
       turn();
+      check(gameSet);
     } else if (playerTurn.textContent === `Player ${player2.getName} turn` && tableCell.textContent === '') {
       changeText(tableCell, 'O');
       const os = player2.getPlays;
       os.push(parseInt(cell.dataset.cell, 10));
       player2.getPlays = os;
-      check(player2.getPlays);
+      const gameSet = gameFlow(player2.getPlays);
       turn();
+      check(gameSet);
     }
   });
   const btn1 = document.getElementById('btn-1');
