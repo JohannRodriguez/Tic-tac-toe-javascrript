@@ -19,9 +19,9 @@ const player2 = Player('', 'O');
 
 const turn = () => {
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-    playerTurn.textContent = `Player ${player2.getName} turn`;
+    changeText(playerTurn, `Player ${player2.getName} turn`)
   } else {
-    playerTurn.textContent = `Player ${player1.getName} turn`;
+    changeText(playerTurn, `Player ${player1.getName} turn`)
   }
 }
 
@@ -37,37 +37,63 @@ const check = (num) => {
       }
     });
     if (counter === 3) {
-      cover.classList.remove('none');
-      cover.classList.add('block');
+      coverDom(cover);
       tie = false;
       if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-        winner.textContent = `${player1.getName} is the winner!`;
-        playerTurn.textContent = '';
+        changeText(winner, `${player1.getName} is the winner!`);
+        changeText(playerTurn, '');
       } else if (playerTurn.textContent === `Player ${player2.getName} turn`) {
-        winner.textContent = `${player2.getName} is the winner!`;
-        playerTurn.textContent = '';
+        changeText(winner, `${player2.getName} is the winner!`);
+        changeText(playerTurn, '');
       }
     }
   });
   if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
-    cover.classList.remove('none');
-    cover.classList.add('block');
-    winner.textContent = "No winner, it's a tie";
+    coverDom(cover, winner);
+    changeText(winner, "No winner, it's a tie");
   }
 }
+
+const adddbtn = (btn1, btn2, restart, firstForm, secondForm) => {
+  btn1.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (document.getElementById('player-1').value === '') {
+      const pl = document.getElementById('player-1');
+      p1Name(pl);
+    } else {
+      player1.getName = document.getElementById('player-1').value;
+      addbtnDom(firstForm, secondForm);
+    }
+  });
+
+  btn2.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (document.getElementById('player-2').value === '' || document.getElementById('player-2').value === player1.getName) {
+      const pl = document.getElementById('player-2');
+      p1Name(pl);
+    } else {
+      player2.getName = document.getElementById('player-2').value;
+      btn2Dom(secondForm, restart);
+    }
+  });
+
+  restart.addEventListener('click', () => {
+    window.location.reload();
+  });
+};
 
 game.tcell.forEach(cell => {
   cell.addEventListener('click', () => {
     const tableCell = document.getElementById(`xotext-${cell.dataset.cell}`);
     if (playerTurn.textContent === `Player ${player1.getName} turn` && tableCell.textContent === '') {
-      tableCell.textContent = 'X';
+      changeText(tableCell, 'X');
       const xs = player1.getPlays;
       xs.push(parseInt(cell.dataset.cell, 10));
       player1.getPlays = xs;
       check(player1.getPlays);
       turn();
     } else if (playerTurn.textContent === `Player ${player2.getName} turn` && tableCell.textContent === '') {
-      tableCell.textContent = 'O';
+      changeText(tableCell, 'O');
       const os = player2.getPlays;
       os.push(parseInt(cell.dataset.cell, 10));
       player2.getPlays = os;
