@@ -1,4 +1,7 @@
-const addbtnDom = (firstForm, secondForm) => {
+const addbtnDom = (firstForm, secondForm, playerTurn = '') => {
+  if (playerTurn === '') {
+    playerTurn = document.getElementById('turn');
+  }
   firstForm.classList.remove('block');
   firstForm.classList.add('none');
   secondForm.classList.remove('none');

@@ -1,5 +1,3 @@
-const playerTurn = document.getElementById('turn');
-
 const Gameboard = () => {
   const winCondition = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
     [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
@@ -17,7 +15,10 @@ const game = Gameboard();
 const player1 = Player('', 'X');
 const player2 = Player('', 'O');
 
-const turn = () => {
+const turn = (player1, player2, playerTurn = '') => {
+  if (playerTurn === '') {
+    playerTurn = document.getElementById('turn');
+  }
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
     changeText(playerTurn, `Player ${player2.getName} turn`);
   } else {
@@ -25,7 +26,10 @@ const turn = () => {
   }
 };
 
-const gameFlow = (num) => {
+const gameFlow = (num, playerTurn = '') => {
+  if (playerTurn === '') {
+    playerTurn = document.getElementById('turn');
+  }
   let tie = true;
   playerWinner = '';
   game.winCondition.forEach(win => {
@@ -57,7 +61,6 @@ const check = (gameSet) => {
   if (gameSet.playerWinner.length !== 0) {
     coverDom(cover);
     changeText(winner, gameSet.playerWinner);
-    changeText(playerTurn, '');
   }
 };
 
@@ -91,6 +94,7 @@ const adddbtn = (btn1, btn2, restart, firstForm, secondForm) => {
 
 game.tcell.forEach(cell => {
   cell.addEventListener('click', () => {
+    const playerTurn = document.getElementById('turn');
     const tableCell = document.getElementById(`xotext-${cell.dataset.cell}`);
     if (playerTurn.textContent === `Player ${player1.getName} turn` && tableCell.textContent === '') {
       changeText(tableCell, 'X');
@@ -98,7 +102,7 @@ game.tcell.forEach(cell => {
       xs.push(parseInt(cell.dataset.cell, 10));
       player1.getPlays = xs;
       const gameSet = gameFlow(player1.getPlays);
-      turn();
+      turn(player1, player2);
       check(gameSet);
     } else if (playerTurn.textContent === `Player ${player2.getName} turn` && tableCell.textContent === '') {
       changeText(tableCell, 'O');
@@ -106,7 +110,7 @@ game.tcell.forEach(cell => {
       os.push(parseInt(cell.dataset.cell, 10));
       player2.getPlays = os;
       const gameSet = gameFlow(player2.getPlays);
-      turn();
+      turn(player1, player2);
       check(gameSet);
     }
   });
