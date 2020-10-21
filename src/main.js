@@ -20,9 +20,11 @@ const turn = (player1, player2, playerTurn = '') => {
     playerTurn = document.getElementById('turn');
   }
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-    changeText(playerTurn, `Player ${player2.getName} turn`);
+  playerTurn.textContent = `Player ${player2.getName} turn`;
+  return playerTurn
   } else {
-    changeText(playerTurn, `Player ${player1.getName} turn`);
+  playerTurn.textContent = `Player ${player1.getName} turn`;
+  return playerTurn
   }
 };
 
@@ -121,3 +123,5 @@ game.tcell.forEach(cell => {
   const restart = document.getElementById('restart');
   adddbtn(btn1, btn2, restart, firstForm, secondForm);
 });
+
+module.exports = turn, gameFlow;
