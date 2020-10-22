@@ -1,4 +1,14 @@
-import turn from './src/main';
+import { expect, test } from '@jest/globals';
+import { turn, gameFlow, Gameboard, Player } from './src/main';
+
+test('Gets player name and array', () => {
+  expect(Player('Lilith')).toEqual({name: 'Lilith', getPlays: []});
+});
+
+test('Gets gameboard with cells', () => {
+  expect(Gameboard).toEqual({tcell: null, winCondition: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+    [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]});
+});
 
 test('says the turn correctly', () => {
   const play = document.createElement("h1")
@@ -10,9 +20,7 @@ test('says the turn correctly', () => {
   make.textContent = 'Player Fiat turn'
 
   expect(turn({getName:"Fiat", getPlays:[1, 2, 3]}, {getName:"mono", getPlays:[5, 6]}, play)).toEqual(make);
-})
-
-import gameFlow from './src/main'
+});
 
 test('we have a winner', () => {
 

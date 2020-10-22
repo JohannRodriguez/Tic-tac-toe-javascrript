@@ -1,16 +1,10 @@
 {
-  "name": "tic-tac-toe-javascrripts",
+  "name": "tic-tac-toe-javascrript",
   "version": "1.0.0",
   "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "babel-jest": "^26.6.0",
-    "jest": "^26.6.0"
-  },
+  "main": "function.test.js",
   "scripts": {
+    "start": "babel src --out-dir dist",
     "test": "jest"
   },
   "repository": {
@@ -22,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/JohannRodriguez/Tic-tac-toe-javascrript/issues"
   },
-  "homepage": "https://github.com/JohannRodriguez/Tic-tac-toe-javascrript#readme"
+  "homepage": "https://github.com/JohannRodriguez/Tic-tac-toe-javascrript#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1"
+  },
+  "dependencies": {
+    "jest": "^26.6.0"
+  }
 }

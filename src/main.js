@@ -6,9 +6,8 @@ const Gameboard = () => {
 };
 
 const Player = (name) => {
-  const getName = () => name;
   const getPlays = [];
-  return { getName, getPlays };
+  return { name, getPlays };
 };
 
 const game = Gameboard();
@@ -124,4 +123,5 @@ game.tcell.forEach(cell => {
   adddbtn(btn1, btn2, restart, firstForm, secondForm);
 });
 
-module.exports = turn, gameFlow;
+
+export { Gameboard, Player };
