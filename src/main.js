@@ -27,12 +27,12 @@ const turn = (player1, player2, playerTurn = '') => {
   }
 };
 
-const gameFlow = (num, playerTurn = '') => {
+const gameFlow = (num, playerTurn = '', player11 = player1, player22 = player2) => {
   if (playerTurn === '') {
     playerTurn = document.getElementById('turn');
   }
   let tie = true;
-  playerWinner = '';
+  let playerWinner = '';
   game.winCondition.forEach(win => {
     let counter = 0;
     win.forEach(cool => {
@@ -42,15 +42,15 @@ const gameFlow = (num, playerTurn = '') => {
     });
     if (counter === 3) {
       tie = false;
-      if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-        playerWinner = `${player1.getName} is the winner!`;
-      } else if (playerTurn.textContent === `Player ${player2.getName} turn`) {
-        playerWinner = `${player2.getName} is the winner!`;
+      if (playerTurn.textContent === `Player ${player11.getName} turn`) {
+        playerWinner = `${player11.getName} is the winner!`;
+      } else if (playerTurn.textContent === `Player ${player22.getName} turn`) {
+        playerWinner = `${player22.getName} is the winner!`;
       }
     }
   });
 
-  if (player1.getPlays.length + player2.getPlays.length === 9 && tie === true) {
+  if (player11.getPlays.length + player22.getPlays.length === 9 && tie === true) {
     playerWinner = "No winner, it's a tie";
   }
   return { playerWinner };
@@ -123,5 +123,4 @@ game.tcell.forEach(cell => {
   adddbtn(btn1, btn2, restart, firstForm, secondForm);
 });
 
-
-export { Gameboard, Player };
+export {turn, gameFlow, Player, Gameboard}

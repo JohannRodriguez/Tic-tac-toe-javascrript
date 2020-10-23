@@ -6,7 +6,7 @@ test('Gets player name and array', () => {
 });
 
 test('Gets gameboard with cells', () => {
-  expect(Gameboard).toEqual({tcell: null, winCondition: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+  expect(Gameboard()).toBe({tcell: NodeList, winCondition: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
     [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]});
 });
 
@@ -26,8 +26,14 @@ test('we have a winner', () => {
 
   const play = document.createElement("h1")
   play.setAttribute('id', 'turn')
-  play.textContent = 'Player mono turn'
+  play.textContent = 'Player Fiat turn'
 
-  const player1 = {getName:"Fiat", getPlays:[1, 2, 3]}
-  expect(gameFlow(player1.getPlays, play)).toBe('wef');
+  const game = {
+    winCondition : [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+    [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+  }
+
+  const player = {getName:"Fiat", getPlays:[1, 2, 3]}
+
+  expect(gameFlow(player.getPlays, play, {getName:"Fiat", getPlays:[1, 2, 3]}, {getName:"mono", getPlays:[5, 6]})).toEqual({"playerWinner": "Fiat is the winner!"});
 })
