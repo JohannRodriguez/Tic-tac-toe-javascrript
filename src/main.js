@@ -1,7 +1,6 @@
-const Gameboard = () => {
+const Gameboard = (tcell) => {
   const winCondition = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
     [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
-  const tcell = document.querySelectorAll('.table-cell');
   return { winCondition, tcell };
 };
 
@@ -10,7 +9,7 @@ const Player = (name) => {
   return { name, getPlays };
 };
 
-const game = Gameboard();
+const game = Gameboard(document.querySelectorAll('.table-cell'));
 const player1 = Player('', 'X');
 const player2 = Player('', 'O');
 
