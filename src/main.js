@@ -18,12 +18,11 @@ const turn = (player1, player2, playerTurn = '') => {
     playerTurn = document.getElementById('turn');
   }
   if (playerTurn.textContent === `Player ${player1.getName} turn`) {
-  playerTurn.textContent = `Player ${player2.getName} turn`;
-  return playerTurn
-  } else {
-  playerTurn.textContent = `Player ${player1.getName} turn`;
-  return playerTurn
+    playerTurn.textContent = `Player ${player2.getName} turn`;
+    return playerTurn;
   }
+  playerTurn.textContent = `Player ${player1.getName} turn`;
+  return playerTurn;
 };
 
 const gameFlow = (num, playerTurn = '', player11 = player1, player22 = player2) => {
@@ -122,4 +121,6 @@ game.tcell.forEach(cell => {
   adddbtn(btn1, btn2, restart, firstForm, secondForm);
 });
 
-export {turn, gameFlow, Player, Gameboard}
+export {
+  turn, gameFlow, Player, Gameboard,
+};
